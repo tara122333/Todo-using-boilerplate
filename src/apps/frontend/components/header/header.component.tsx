@@ -1,27 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Usermodal from './usermodal.component';
 import './header.component.scss';
-
+import { RxCross2 } from 'react-icons/rx'
 
 export default function Header(): React.ReactElement {
 
-  const logout = () => {
-    localStorage.clear();
+  const [openusermodal, setOpenusermodal] = useState(false);
+
+  // const logout = () => {
+  //   localStorage.clear();
+  // }
+
+  const openusermodalbox = () => {
+    setOpenusermodal(!openusermodal);
   }
 
   return (
-    <div className="navbar">
-      <div className="navbar-logo-section">
-        <div className="navbar-logo-img">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Microsoft_To-Do_icon.png/1200px-Microsoft_To-Do_icon.png" alt="logo" style={{ width: '100%', height: "100%" }} />
+    <>
+      <div className="navbar">
+        <div className="navbar-logo-section">
+          <div className="navbar-logo-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Microsoft_To-Do_icon.png/1200px-Microsoft_To-Do_icon.png" alt="logo" style={{ width: '100%', height: "100%" }} />
+          </div>
+          <h3>ToDo</h3>
         </div>
-        <h3>ToDo</h3>
+        <div className="navbar-profile-section" onClick={openusermodalbox}>
+          {
+            !openusermodal ? <>
+              <span className='user-profile'>
+                T
+              </span>
+            </> :
+              <>
+                <span className='user-profile'>
+                  <RxCross2 />
+                </span>
+              </>
+          }
+
+        </div>
       </div>
-      <div className="navbar-profile-section">
-        <h3>Name</h3>
-        <p className="log-out-btn"
-          onClick={logout}
-        >Log out</p>
-      </div>
-    </div>
+      {
+        openusermodal && <Usermodal isOpen={openusermodal} setIsOpen={setOpenusermodal} />
+      }
+    </>
   );
 }

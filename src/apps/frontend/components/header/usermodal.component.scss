@@ -1,0 +1,62 @@
+
+.log-out-pop-up{
+    position: absolute;
+    top: 70px;
+    right: 130px;
+}
+
+.log-out-modal{
+    background-color: white;
+    width: 320px;
+    height: 140px;
+    border-radius: 5px;
+    padding: 20px 35px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.log-out-modal-user-info{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.user-info-text{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.heading{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.sub-heading{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(110, 110, 110);
+}
+
+.log-out-box{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: start;
+    border-top: 1px solid rgb(209, 207, 207);
+    padding: 12px ;
+}
+
+.log-out-btn-icon{
+    font-size: 22px;
+}
+
+.log-out-btn-txt{
+    font-size: 18px;
+    font-weight: 500;
+}

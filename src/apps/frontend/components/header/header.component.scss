@@ -29,19 +29,32 @@
     height: 100%;
 }
 
-.navbar-profile-section h3 {
-    font-size: small;
-}
-
-
-.log-out-btn {
-    background-color: red;
-    padding: 2px 13px;
-    border-radius: 4px;
-    color: #fff;
+.user-profile{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: rgb(201, 197, 197);
     cursor: pointer;
-    font-size: smaller;
+    color: black;
+    border: 1px solid gray;
 }
+
+// .navbar-profile-section h3 {
+//     font-size: small;
+// }
+
+
+// .log-out-btn {
+//     background-image: linear-gradient(90.3deg, rgb(246, 132, 39) 0.29%, rgb(255, 204, 25) 99.77%);
+//     padding: 2px 13px;
+//     border-radius: 4px;
+//     color: #fff;
+//     cursor: pointer;
+//     font-size: smaller;
+// }
 
 
 

@@ -24,15 +24,15 @@ export default function App(): React.ReactElement {
       accessService: new AccessService(),
     }}>
       <Router>
+        <Header />
         <div className='container'>
-          <Header />
           <Routes>
             <Route path='/about' element={<About />} />
             <Route path='/' element={<Login />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
-          <Footer />
         </div>
+        <Footer />
       </Router>
     </DepsProvider>
   );
