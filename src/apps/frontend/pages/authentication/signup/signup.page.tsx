@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 
-import { useDeps } from '../../contexts';
+import { useDeps } from '../../../contexts';
 import './login.page.scss';
 
-export default function Login(): React.ReactElement {
+export default function Signup(): React.ReactElement {
   const { accessService } = useDeps();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

@@ -1,0 +1,18 @@
+.authentication-page-layout{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.authentication-page-layout-img-section{
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+.authentication-page-layout-form-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
