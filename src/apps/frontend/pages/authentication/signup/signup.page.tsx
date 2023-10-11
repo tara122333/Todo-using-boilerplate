@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import './signup.page.scss';
 import { useDeps } from '../../../contexts';
+import { Link } from 'react-router-dom';
 
 export default function SignupForm(): React.ReactElement {
   const { accessService } = useDeps();
@@ -33,7 +34,7 @@ export default function SignupForm(): React.ReactElement {
       <h1>Sign Up</h1>
       <div className='signup-text'>
         <h2>Create an account</h2>
-        <p>Already have an account? <span className='login-link'>Login</span> </p>
+        <p>Already have an account? <Link to={"/"} className='login-link'>Login</Link> </p>
       </div>
       <input
         className='input-box'

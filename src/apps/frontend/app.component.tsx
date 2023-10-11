@@ -4,7 +4,7 @@ import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { Header, Footer } from './components';
 import { DepsProvider } from './contexts';
 import { Config } from './helpers';
-import { About, Login, NotFound, Signup } from './pages';
+import { About, Home, Login, NotFound, Signup } from './pages';
 import { AccessService } from './services';
 import InspectLet from './vendor/inspectlet';
 
@@ -13,7 +13,6 @@ import './app.global.scss';
 export default function App(): React.ReactElement {
   useEffect(() => {
     const inspectletKey = Config.getConfigValue('inspectletKey');
-
     if (inspectletKey) {
       InspectLet();
     }
@@ -29,6 +28,7 @@ export default function App(): React.ReactElement {
           <Routes>
             <Route path='/about' element={<About />} />
             <Route path='/' element={<Login />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='*' element={<NotFound />} />
           </Routes>

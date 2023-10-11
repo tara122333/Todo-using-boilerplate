@@ -1,0 +1,51 @@
+.add-task-modal {
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-modal-box {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 25px 50px;
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 6px;
+}
+
+.cross-btn {
+    font-weight: bold;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 200ms;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.task-form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3px;
+}

@@ -23,6 +23,8 @@ export default class TaskWriter {
     const createdTask = await TaskRepository.taskDB.create({
       account: params.accountId,
       name: params.name,
+      date: params.date,
+      time: params.time,
       active: true,
     });
     return TaskUtil.convertTaskDBToTask(createdTask);

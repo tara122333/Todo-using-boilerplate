@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import { useDeps } from '../../../contexts';
 import './login.page.scss';
+import { Link } from 'react-router-dom';
 
 export default function LoginForm(): React.ReactElement {
   const { accessService } = useDeps();
@@ -9,6 +10,7 @@ export default function LoginForm(): React.ReactElement {
   const [password, setPassword] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+
 
   const login = useCallback(async () => {
     setSuccess(false);
@@ -35,7 +37,7 @@ export default function LoginForm(): React.ReactElement {
         <h1>Login</h1>
         <div className='login-text'>
           <h2>Welcome guys!</h2>
-          <p>Don't have an Account? <span className='signup-link'>Sign Up </span> </p>
+          <p>Don't have an Account? <Link to={"/signup"} className='signup-link'>Sign Up </Link> </p>
         </div>
         <input
           className='input-box'

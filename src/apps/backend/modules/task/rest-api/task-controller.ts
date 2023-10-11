@@ -21,6 +21,8 @@ export default class TaskController {
       const params: CreateTaskParams = {
         accountId: req.params.accountId,
         name: req.body.name as string,
+        date: req.body.date as string,
+        time: req.body.time as string,
       };
       const task: Task = await TaskService.createTask(params);
       res.status(201).send(TaskController.serializeTaskAsJSON(task));
@@ -88,6 +90,8 @@ export default class TaskController {
       id: task.id,
       account: task.account,
       name: task.name,
+      date: task.date,
+      time: task.time,
     };
   }
 }

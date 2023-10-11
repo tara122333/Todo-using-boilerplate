@@ -3,10 +3,10 @@ import AppError from '../error/app-error';
 
 export class Task {
   id: string;
-
   account: string;
-
   name: string;
+  date: string;
+  time: string;
 }
 
 export type GetAllTaskParams = {
@@ -28,6 +28,8 @@ export type GetTaskByNameParams = {
 export type CreateTaskParams = {
   accountId: string;
   name: string;
+  date: string;
+  time: string;
 };
 
 export type DeleteTaskParams = {
