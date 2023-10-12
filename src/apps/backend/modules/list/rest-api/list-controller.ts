@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 
-import { CreateListParams, GetAllListParams, List } from "../types";
+import { CreateListParams, DeleteListParams, GetAllListParams, List } from "../types";
 import ListService from "../list-service";
 
 export default class ListController {
@@ -34,6 +34,22 @@ export default class ListController {
 
             const lists = await ListService.getListsForAccount(params);
             res.status(201).send(lists.map((list) => ListController.serializeListAsJSON(list)));
+        } catch (e) {
+            next(e);
+        }
+    }
+    public static async deleteList(
+        req: Request,
+        res: Response,
+        next: NextFunction,
+    ): Promise<void> {
+        try {
+            const params: DeleteListParams = {
+                accountId: req.params.accountId,
+                listId: req.params.id
+            };
+            await ListService.deleteList(params);
+            res.status(204).send();
         } catch (e) {
             next(e);
         }

@@ -7,9 +7,10 @@ import ListController from "./list-controller";
 export default class ListRouter {
     public static getRoutes(): Router {
         const router = Router({ mergeParams: true });
-        router.post('/', ListController.createList);
 
+        router.post('/', ListController.createList);
         router.get('/', ListController.getAllLists);
+        router.delete('/:id', ListController.deleteList);
 
         return router;
     }

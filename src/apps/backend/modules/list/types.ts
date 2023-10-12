@@ -19,7 +19,12 @@ export type GetAllListParams = {
 
 export type GetListParams = {
     accountId: string;
-    taskId: string;
+    listId: string;
+};
+
+export type DeleteListParams = {
+    accountId: string;
+    listId: string;
 };
 
 
