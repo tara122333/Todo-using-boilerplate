@@ -13,6 +13,7 @@ import ConfigService from './modules/config/config-service';
 import Logger from './modules/logger/logger';
 import LoggerManager from './modules/logger/logger-manager';
 import TaskServiceManager from './modules/task/task-service-manager';
+import ListServiceManager from './modules/list/list-service-manager';
 
 const isDevEnv = process.env.NODE_ENV === 'development';
 
@@ -63,6 +64,9 @@ export default class App {
 
     const taskServiceRESTApi = await TaskServiceManager.createRestAPIServer();
     app.use('/', taskServiceRESTApi);
+
+    const listServiceRESTApi = await ListServiceManager.createRestAPIServer();
+    app.use('/', listServiceRESTApi);
 
     return app;
   }
