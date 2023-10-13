@@ -27,7 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 30px;
+  padding: 8px 30px;
   border-radius: 4px;
   outline: none;
   border: none;
@@ -50,7 +50,7 @@
   border-radius: 4px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #16A085 0%, #4d920e  51%, #16A085  100%);
+  background-image: linear-gradient(to right, #16A085 0%, #4d920e 51%, #16A085 100%);
   cursor: pointer;
   gap: 3px;
   color: white;
@@ -61,5 +61,28 @@
 }
 
 .secondry-btn:hover {
+  background-position: right center;
+}
+
+
+.red-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 30px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+  cursor: pointer;
+  gap: 3px;
+  color: white;
+  display: block;
+  background-size: 200% auto;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.red-btn:hover {
   background-position: right center;
 }

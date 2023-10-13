@@ -49,3 +49,15 @@
     width: 100%;
     gap: 3px;
 }
+
+
+.add-list-box {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.list-input-box, .task-input-box {
+    width: 250px;
+}
+

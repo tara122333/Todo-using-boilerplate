@@ -24,6 +24,14 @@ export class Tasks {
     }]
 }
 
+export class Lists {
+    data: [{
+        account: string;
+        id: string,
+        list: string,
+    }]
+}
+
 export class AccessTokenDataToken {
     token: string
 }
