@@ -9,5 +9,5 @@ export {
   Login,
   NotFound,
   Signup,
-  Home
+  Home,
 };

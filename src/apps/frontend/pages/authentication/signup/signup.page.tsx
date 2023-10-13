@@ -50,6 +50,7 @@ export default function SignupForm(): React.ReactElement {
         }
       }
     } catch (err) {
+      toast.error("signup fail")
       setError(true);
     }
   }, [

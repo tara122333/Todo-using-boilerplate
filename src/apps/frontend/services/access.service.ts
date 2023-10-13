@@ -1,6 +1,6 @@
 import APIService from './api.service';
 
-import {  AccessTokenData, SignUp } from '../types/account';
+import { AccessTokenData, SignUp, Tasks } from '../types/account';
 
 export default class AccessService extends APIService {
   login(username: string, password: string): Promise<AccessTokenData> {
@@ -14,6 +14,14 @@ export default class AccessService extends APIService {
     return this.apiClient.post('/accounts', {
       username,
       password,
+    });
+  }
+
+  getAllTasks(accountId: string, token: string): Promise<Tasks> {
+    return this.apiClient.get(`/accounts/${accountId}/tasks`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     });
   }
 }

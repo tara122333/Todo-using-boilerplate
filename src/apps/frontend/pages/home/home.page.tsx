@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './home.page.scss';
-import { Addtask } from '../../components';
+import { Addtask, Tasks } from '../../components';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home(): React.ReactElement {
@@ -13,11 +13,12 @@ export default function Home(): React.ReactElement {
       navigate("/");
     }
   }, [])
-  
+
   return (
     <>
-      <div>
+      <div className='home'>
         <Addtask />
+        <Tasks />
       </div>
     </>
   );

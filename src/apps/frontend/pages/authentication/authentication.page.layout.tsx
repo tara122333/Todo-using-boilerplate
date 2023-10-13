@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import './authentication-page-layout.scss';
+import './authentication.page.layout.scss';
 const AuthenticationPageLayout: React.FC<PropsWithChildren> = ({
     children,
 }) => (

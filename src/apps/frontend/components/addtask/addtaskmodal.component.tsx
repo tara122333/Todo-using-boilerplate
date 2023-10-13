@@ -3,9 +3,12 @@ import './addtaskmodal.component.scss'
 import { RxCross2 } from 'react-icons/rx'
 
 export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement {
-    console.log(isOpen, setIsOpen)
     return (
+        
         <div className='add-task-modal'>
+            {
+                isOpen
+            }
             <div className='add-task-modal-box'>
                 <span className='cross-btn' onClick={() => { setIsOpen(false) }}>
                     <h3>Add Task</h3>
@@ -100,7 +103,7 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
 
                             </div>
                         </div>
-                        <form className='add-list-section'>
+                        <div className='add-list-section'>
                             <div className="task-form-group">
 
                                 <label htmlFor="list">Add New List</label>
@@ -120,7 +123,7 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
 
                         <button
                             // onClick={addTask}

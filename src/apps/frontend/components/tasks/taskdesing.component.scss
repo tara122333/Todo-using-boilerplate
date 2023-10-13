@@ -1,0 +1,13 @@
+.task-design-box{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border: 1px solid gray;
+    gap: 36px;
+    border-radius: 3px;
+    padding: 2px 16px;
+}
+
+.task-design-box-info{
+    width: 33%;
+}

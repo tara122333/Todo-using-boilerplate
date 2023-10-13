@@ -7,10 +7,6 @@ export default function Header(): React.ReactElement {
 
   const [openusermodal, setOpenusermodal] = useState(false);
 
-  // const logout = () => {
-  //   localStorage.clear();
-  // }
-
   const openusermodalbox = () => {
     setOpenusermodal(!openusermodal);
   }

@@ -14,6 +14,16 @@ export class SignUp {
     }
 }
 
+export class Tasks {
+    data: [{
+        account: string;
+        date: string,
+        id: string,
+        name: string,
+        time: string,
+    }]
+}
+
 export class AccessTokenDataToken {
     token: string
 }

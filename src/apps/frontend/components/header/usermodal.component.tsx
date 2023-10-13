@@ -7,7 +7,7 @@ export default function Usermodal({ isOpen, setIsOpen }): React.ReactElement {
 
     const navigate = useNavigate();
     console.log(isOpen);
-    
+
     const logout = () => {
         setIsOpen(false);
         localStorage.clear();
@@ -24,8 +24,7 @@ export default function Usermodal({ isOpen, setIsOpen }): React.ReactElement {
                         </span>
                     </div>
                     <div className='user-info-text'>
-                        <span className='heading'>Tara Kumawat</span>
-                        <span className='sub-heading'>tarachand122333@gmail.com</span>
+                        <span className='heading'>Tara Chand Kumawat</span>
                     </div>
                 </div>
                 <div className='log-out-box'>

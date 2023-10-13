@@ -4,6 +4,8 @@ import './login.page.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AccessService } from '../../../services';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 export default function LoginForm(): React.ReactElement {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -19,16 +21,28 @@ export default function LoginForm(): React.ReactElement {
     setError(false);
 
     try {
-      const response = await accessService.login(username, password);
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        setSuccess(true);
-        navigate(`/home/${response.data.accountId}`);
+      if (username.length <= 0) {
+        toast.error("username required!")
+      }
+      else if (password.length <= 0) {
+        toast.error("password required!")
       }
       else {
-        setError(false);
+        const response = await accessService.login(username, password);
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", response.data.accountId);
+          setSuccess(true);
+          navigate(`/home/${response.data.accountId}`);
+          toast.success("login success");
+        }
+        else {
+          toast.error("login fail")
+          setError(true);
+        }
       }
     } catch (err) {
+      toast.error("login fail")
       setError(true);
     }
   }, [
@@ -69,6 +83,7 @@ export default function LoginForm(): React.ReactElement {
         <button type='button' className='login-btn' onClick={login}>
           LOGIN
         </button>
+        <ToastContainer />
       </form>
     </>
 

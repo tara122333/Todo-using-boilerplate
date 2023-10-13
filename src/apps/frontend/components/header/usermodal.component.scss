@@ -19,28 +19,19 @@
 
 .log-out-modal-user-info{
     display: flex;
-    justify-content: space-between;
     width: 100%;
     align-items: center;
+    gap: 15px;
 }
 
 .user-info-text{
     display: flex;
-    flex-direction: column;
-    gap: 3px;
 }
 
 .heading{
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-}
-
-.sub-heading{
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    color: rgb(110, 110, 110);
 }
 
 .log-out-box{
