@@ -3,7 +3,7 @@ import AppError from '../error/app-error';
 
 export class Account {
   id: string;
-
+  
   username: string;
 
   hashedPassword: string;

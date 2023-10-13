@@ -45,11 +45,22 @@
 
 .log-out-box{
     display: flex;
-    gap: 10px;
     align-items: center;
     justify-content: start;
     border-top: 1px solid rgb(209, 207, 207);
     padding: 12px ;
+}
+
+.log-out-txt{
+    display: flex;
+    cursor: pointer;
+    gap: 10px;
+    align-items: center;
+    justify-content: start;
+}
+
+.log-out-txt:hover{
+    color: rgb(91, 89, 89);
 }
 
 .log-out-btn-icon{

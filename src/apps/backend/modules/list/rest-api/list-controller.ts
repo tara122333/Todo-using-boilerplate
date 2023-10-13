@@ -33,7 +33,7 @@ export default class ListController {
             };
 
             const lists = await ListService.getListsForAccount(params);
-            res.status(201).send(lists.map((list) => ListController.serializeListAsJSON(list)));
+            res.status(200).send(lists.map((list) => ListController.serializeListAsJSON(list)));
         } catch (e) {
             next(e);
         }
