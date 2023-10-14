@@ -31,6 +31,19 @@ export class Lists {
         list: string,
     }]
 }
+export class AddLists {
+    data: {
+        account: string;
+        id: string,
+        list: string,
+    }
+}
+
+export class GetUsername {
+    data: {
+        username: string;
+    }
+}
 
 export class AccessTokenDataToken {
     token: string

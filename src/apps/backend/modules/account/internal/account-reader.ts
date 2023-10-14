@@ -22,6 +22,18 @@ export default class AccountReader {
     return AccountUtil.convertAccountDBToAccount(dbAccount);
   }
 
+  public static async getAccountByUserId(accountId: string): Promise<Account> {
+    const dbAccount = await AccountRepository.accountDB.findOne({
+      _id : accountId,
+      active: true,
+    });
+
+    if (!dbAccount) {
+      throw new AccountNotFoundError(accountId);
+    }
+    return AccountUtil.convertAccountDBToAccount(dbAccount);
+  }
+
   public static async getAccountByUsernamePassword(
     params: AccountSearchParams,
   ): Promise<Account> {

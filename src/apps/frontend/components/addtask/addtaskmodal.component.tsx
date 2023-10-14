@@ -19,16 +19,19 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
     })
 
     const accessService = new AccessService();
-    const token = localStorage.getItem("token");
-    const accountId = localStorage.getItem("user");
+
 
     const handleTask = (e) => {
         setTask((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    const getAllLists = useCallback(async () => {
+    const token = localStorage.getItem("token");
+    const accountId = localStorage.getItem("user");
 
+
+    const getAllLists = useCallback(async () => {
         try {
+
             const response = await accessService.getAllLists(accountId, token);
             if (response.data.length > 0) {
                 setLists(response.data);
@@ -37,14 +40,26 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
             toast.error("something went wrong!");
         }
     }, [
-        token,
         accountId,
-        lists
+        token
     ]);
 
     useEffect(() => {
         getAllLists();
-    }, [lists, accountId, token])
+    }, [listToggel])
+
+
+    const addTask = useCallback(async () => {
+        try {
+            const response = await accessService.createTask(accountId, token, task.name, task.date, task.time);
+            console.log(response);
+
+        } catch (err) {
+            toast.error("something went wrong!");
+        }
+    }, [
+        lists
+    ]);
 
     return (
 
@@ -147,13 +162,13 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
                         </div>
                         <div className='add-list-section'>
                             {
-                                listToggel && <AddList />
+                                listToggel && <AddList setListToggel={setListToggel} />
                             }
 
                         </div>
 
                         <button
-                            // onClick={addTask}
+                            onClick={addTask}
                             className="task-button primary-btn"
                         >Submit
                         </button>

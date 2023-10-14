@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
 import AccountService from '../account-service';
-import { Account, AccountSearchParams, CreateAccountParams } from '../types';
+import { Account, AccountGetParams, AccountSearchParams, CreateAccountParams } from '../types';
 
 export default class AccountController {
   public static async createAccount(
@@ -29,6 +29,20 @@ export default class AccountController {
       const params: AccountSearchParams = { username, password };
       const account = await AccountService.getAccountByUsernamePassword(params);
       res.status(201).send(AccountController.serializeAccountAsJSON(account));
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  public static async getAccount(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const { accountId }: AccountGetParams = req.params as AccountGetParams;
+      const account = await AccountService.getAccountByUserId(accountId);
+      res.status(200).send(AccountController.serializeAccountAsJSON(account));
     } catch (e) {
       next(e);
     }

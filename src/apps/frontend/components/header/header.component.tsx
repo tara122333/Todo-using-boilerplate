@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Usermodal from './usermodal.component';
 import './header.component.scss';
 import { RxCross2 } from 'react-icons/rx'
+import {RiUser3Line} from 'react-icons/ri'
 
 export default function Header(): React.ReactElement {
 
@@ -24,7 +25,7 @@ export default function Header(): React.ReactElement {
           {
             !openusermodal ? <>
               <span className='user-profile'>
-                T
+                <RiUser3Line />
               </span>
             </> :
               <>

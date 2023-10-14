@@ -9,7 +9,7 @@ import ListRepository from "../internal/store/list-repository";
 export default class ListRESTApiServer {
     public static async create(): Promise<Application> {
         await ListRepository.createDBConnection();
-
+        
         const app = express();
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());

@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import './addlist.component.scss';
 import { AccessService } from '../../services';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
-export default function AddList(): React.ReactElement {
+export default function AddList({setListToggel}): React.ReactElement {
 
     const [list, setList] = useState("");
 
@@ -14,7 +14,13 @@ export default function AddList(): React.ReactElement {
     const addList = useCallback(async () => {
         try {
             const response = await accessService.addList(accountId, token, list);
-            console.log(response)
+            if(response.data.id){
+                toast.success("list added success");
+                setListToggel(false);
+            }
+            else{
+                toast.error("list not added");
+            }
         } catch (err) {
             toast.error("something went wrong!");
         }
@@ -42,6 +48,7 @@ export default function AddList(): React.ReactElement {
                     Save
                 </button>
             </div>
+        <ToastContainer />
         </div>
     );
 }
