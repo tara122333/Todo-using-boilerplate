@@ -21,7 +21,20 @@ export class Tasks {
         id: string,
         name: string,
         time: string,
+        status: string,
+        list: string
     }]
+}
+export class Task {
+    data: {
+        account: string;
+        date: string,
+        id: string,
+        name: string,
+        time: string,
+        status: string,
+        list: string
+    }
 }
 
 export class Lists {

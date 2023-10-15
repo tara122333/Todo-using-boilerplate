@@ -23,8 +23,8 @@ export default class TaskController {
         name: req.body.name as string,
         date: req.body.date as string,
         time: req.body.time as string,
-        status:req.body.time as string,
-        list:req.body.time as string,
+        status:req.body.status as string,
+        list:req.body.list as string,
       };
       const task: Task = await TaskService.createTask(params);
       res.status(201).send(TaskController.serializeTaskAsJSON(task));

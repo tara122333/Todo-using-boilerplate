@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import AddList from '../addlist/addlist.component';
 
-export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement {
+export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "create" }): React.ReactElement {
 
     const [lists, setLists] = useState([]);
     const [listToggel, setListToggel] = useState(false);
@@ -32,10 +32,17 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
     const getAllLists = useCallback(async () => {
         try {
 
-            const response = await accessService.getAllLists(accountId, token);
-            if (response.data.length > 0) {
-                setLists(response.data);
+            const response = await accessService.getTask(accountId, token, id);
+            if (response.data) {
+                setTask({
+                    name: response.data.name,
+                    date: response.data.date,
+                    time: response.data.time,
+                    list: response.data.list,
+                    status: response.data.status,
+                })
             }
+
         } catch (err) {
             toast.error("something went wrong!");
         }
@@ -49,10 +56,38 @@ export default function AddTaskModal({ isOpen, setIsOpen }): React.ReactElement 
     }, [listToggel])
 
 
+    const getTaskData = useCallback(async () => {
+        try {
+
+            const response = await accessService.getAllLists(accountId, token);
+            if (response.data.length > 0) {
+                setLists(response.data);
+            }
+        } catch (err) {
+            toast.error("something went wrong!");
+        }
+    }, [
+        accountId,
+        token,
+        id,
+        type
+    ]);
+
+    useEffect(() => {
+        if (id != "" && type === "edit") {
+            getTaskData();
+        }
+    }, [id, type]);
+
+
     const addTask = useCallback(async () => {
         try {
-            const response = await accessService.createTask(accountId, token, task.name, task.date, task.time);
-            console.log(response);
+            if (type === "edit" && id != "") {
+
+            } else {
+                const response = await accessService.createTask(accountId, token, task.name, task.date, task.time);
+                console.log(response);
+            }
 
         } catch (err) {
             toast.error("something went wrong!");

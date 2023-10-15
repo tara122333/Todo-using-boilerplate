@@ -16,7 +16,7 @@ export default function Tasks(): React.ReactElement {
                 setTasks(response.data);
             }
         } catch (err) {
-            
+
         }
     }, [
         token, accountId, tasks
@@ -30,11 +30,11 @@ export default function Tasks(): React.ReactElement {
         <>
             <div className='tasks-display-box'>
                 {
-                    tasks.length > 0 ?  tasks.map((items) => (
+                    tasks.length > 0 ? tasks.map((items) => (
                         <div key={items.id}>
                             <TaskDesign {...items} />
                         </div>
-                    )): <h2>No Task!</h2>
+                    )) : <h2>No Task!</h2>
                 }
             </div>
         </>
