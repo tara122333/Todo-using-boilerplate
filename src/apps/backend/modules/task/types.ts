@@ -7,6 +7,8 @@ export class Task {
   name: string;
   date: string;
   time: string;
+  status: string;
+  list: string;
 }
 
 export type GetAllTaskParams = {
@@ -30,6 +32,8 @@ export type CreateTaskParams = {
   name: string;
   date: string;
   time: string;
+  status: string;
+  list: string;
 };
 
 export type DeleteTaskParams = {

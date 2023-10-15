@@ -25,6 +25,8 @@ export default class TaskWriter {
       name: params.name,
       date: params.date,
       time: params.time,
+      status: params.status,
+      list: params.list,
       active: true,
     });
     return TaskUtil.convertTaskDBToTask(createdTask);

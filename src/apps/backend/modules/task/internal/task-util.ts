@@ -10,6 +10,8 @@ export default class TaskUtil {
     task.name = taskDb.name;
     task.date = taskDb.date;
     task.time = taskDb.time;
+    task.status = taskDb.status;
+    task.list = taskDb.list;
     return task;
   }
 }

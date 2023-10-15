@@ -7,6 +7,8 @@ export interface TaskDB {
   name: string;
   date: string;
   time: string;
+  status: string;
+  list: string;
 }
 
 export const taskDbSchema: Schema = new Schema<TaskDB>(
@@ -28,6 +30,15 @@ export const taskDbSchema: Schema = new Schema<TaskDB>(
       index: true,
     },
     time: {
+      type: String,
+      index: true,
+    },
+    status: {
+      type: String,
+      index: true,
+      default: "false"
+    },
+    list: {
       type: String,
       index: true,
     },

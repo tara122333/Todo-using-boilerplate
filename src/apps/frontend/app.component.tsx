@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 
-import { Header, Footer } from './components';
 import { Config } from './helpers';
 import { About, Home, Login, NotFound, Signup } from './pages';
 import InspectLet from './vendor/inspectlet';
@@ -20,18 +19,16 @@ export default function App(): React.ReactElement {
   }, []);
 
   return (
-        <Router>
-          <Header />
-          <div className='container'>
-            <Routes>
-              <Route path='/about' element={<About />} />
-              <Route path='/' element={<Login />} />
-              <Route path='/home/:accountId' element={<Home />} />
-              <Route path='/signup' element={<Signup />} />
-              <Route path='*' element={<NotFound />} />
-            </Routes>
-          </div>
-          <Footer />
-        </Router>
+    <Router>
+      <div className=''>
+        <Routes>
+          <Route path='/about' element={<About />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/home/:accountId' element={<Home />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
