@@ -32,7 +32,7 @@ export default function TaskDesign(props): React.ReactElement {
                 toast.success("delete success!!");
             }
         } catch (err) {
-            
+
         }
     }, [
         token, accountId
@@ -41,15 +41,18 @@ export default function TaskDesign(props): React.ReactElement {
     return (
         <>
             {
-                isOpenTaskModal && <AddTaskModal isOpen={isOpenTaskModal} setIsOpen={setIsOpenTaskModal} id={props.id} type={"edit"}/>
+                isOpenTaskModal && <AddTaskModal isOpen={isOpenTaskModal} setIsOpen={setIsOpenTaskModal} id={props.id} type={"edit"} />
             }
 
             <div className='task-design-box'>
                 <div className='task-design-box-info'>
                     <span className='task-status-btn'>
-                        <span className='done-btn'>
-                            <MdOutlineDone />
-                        </span>
+                        {
+                            props.status === "true" ? "✅" : <span className='done-btn'>
+                                <MdOutlineDone />
+                            </span>
+
+                        }
                         {props.name}
                     </span>
                 </div>

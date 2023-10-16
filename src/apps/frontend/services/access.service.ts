@@ -70,6 +70,19 @@ export default class AccessService extends APIService {
     }, { headers });
   }
 
+  editTask(accountId: string, token: string, name: string, date: string, time: string, list: string, status: string, id: string): Promise<Tasks> {
+    const headers = {
+      authorization: `Bearer ${token}`,
+    };
+    return this.apiClient.put(`/accounts/${accountId}/tasks/${id}`, {
+      name: name,
+      date: date,
+      time: time,
+      list: list,
+      status: status
+    }, { headers });
+  }
+
   deleteTask(accountId: string, token: string, id: string): Promise<void> {
     return this.apiClient.delete(`/accounts/${accountId}/tasks/${id}`, {
       headers: {

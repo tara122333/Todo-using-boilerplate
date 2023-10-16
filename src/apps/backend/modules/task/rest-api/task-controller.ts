@@ -9,6 +9,7 @@ import {
   GetAllTaskParams,
   DeleteTaskParams,
   GetTaskParams,
+  EditTaskParams,
 } from '../types';
 
 export default class TaskController {
@@ -23,8 +24,8 @@ export default class TaskController {
         name: req.body.name as string,
         date: req.body.date as string,
         time: req.body.time as string,
-        status:req.body.status as string,
-        list:req.body.list as string,
+        status: req.body.status as string,
+        list: req.body.list as string,
       };
       const task: Task = await TaskService.createTask(params);
       res.status(201).send(TaskController.serializeTaskAsJSON(task));
@@ -50,11 +51,33 @@ export default class TaskController {
     }
   }
 
+  public static async editTask(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const params: EditTaskParams = {
+        accountId: req.params.accountId,
+        name: req.body.name as string,
+        date: req.body.date as string,
+        time: req.body.time as string,
+        status: req.body.status as string,
+        list: req.body.list as string,
+        taskId: req.params.id,
+      };
+      await TaskService.editTask(params);
+      res.status(202).send();
+    } catch (e) {
+      next(e);
+    }
+  }
+
   public static async getAllTasks(
     req: Request,
     res: Response,
     next: NextFunction,
-  ): Promise <void> {
+  ): Promise<void> {
     try {
       const page = +req.query.page;
       const size = +req.query.size;

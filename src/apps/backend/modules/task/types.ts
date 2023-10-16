@@ -36,6 +36,16 @@ export type CreateTaskParams = {
   list: string;
 };
 
+export type EditTaskParams = {
+  accountId: string;
+  name: string;
+  date: string;
+  time: string;
+  status: string;
+  list: string;
+  taskId: string;
+};
+
 export type DeleteTaskParams = {
   accountId: string;
   taskId: string;

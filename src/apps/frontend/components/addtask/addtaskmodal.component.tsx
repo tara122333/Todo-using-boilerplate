@@ -20,7 +20,6 @@ export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "creat
 
     const accessService = new AccessService();
 
-
     const handleTask = (e) => {
         setTask((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
@@ -82,11 +81,18 @@ export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "creat
 
     const addTask = async () => {
         try {
-            // if (type === "edit" && id != "") {
-
-            // } else {
-
-            // }
+            if (type === "edit" && id != "") {
+                await accessService.editTask(accountId, token, task.name, task.date, task.time, task.list, task.status, id);
+                toast.success("task updated success!");
+                setTask({
+                    name: "",
+                    date: "",
+                    time: "",
+                    list: "",
+                    status: "false"
+                });
+                setIsOpen(false);
+            }
             if (type === "create") {
                 if (task.name.length <= 0) {
                     toast.error("task name is required!");

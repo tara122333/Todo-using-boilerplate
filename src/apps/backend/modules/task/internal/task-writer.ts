@@ -1,6 +1,7 @@
 import {
   CreateTaskParams,
   DeleteTaskParams,
+  EditTaskParams,
   GetTaskParams,
   Task,
   TaskWithNameExistsError,
@@ -45,6 +46,28 @@ export default class TaskWriter {
       {
         $set: {
           active: false,
+        },
+      },
+    );
+  }
+
+  public static async editTask(params: EditTaskParams): Promise<void> {
+    const taskParams: GetTaskParams = {
+      accountId: params.accountId,
+      taskId: params.taskId,
+    };
+    const task = await TaskReader.getTaskForAccount(taskParams);
+    await TaskRepository.taskDB.findOneAndUpdate(
+      {
+        _id: task.id,
+      },
+      {
+        $set: {
+          name: params.name,
+          date: params.date,
+          time: params.time,
+          list: params.list,
+          status: params.status
         },
       },
     );
