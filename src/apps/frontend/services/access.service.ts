@@ -49,25 +49,25 @@ export default class AccessService extends APIService {
   }
 
   addList(accountId: string, token: string, list: string): Promise<AddLists> {
-    return this.apiClient.post(`/accounts/${accountId}/lists`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      list
-    });
+    const headers = {
+      authorization: `Bearer ${token}`,
+    };
+    return this.apiClient.post(`/accounts/${accountId}/lists`,
+      { list },
+      { headers });
   }
 
-  createTask(accountId: string, token: string, name: string, date: string, time: string): Promise<Tasks> {
+  createTask(accountId: string, token: string, name: string, date: string, time: string, list: string): Promise<Tasks> {
+    const headers = {
+      authorization: `Bearer ${token}`,
+    };
+
     return this.apiClient.post(`/accounts/${accountId}/tasks`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      body: {
-        name,
-        date,
-        time
-      }
-    });
+      name: name,
+      date: date,
+      time: time,
+      list: list
+    }, { headers });
   }
 
   deleteTask(accountId: string, token: string, id: string): Promise<void> {

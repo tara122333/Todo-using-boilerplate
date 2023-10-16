@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 
 import { Config } from './helpers';
@@ -7,7 +9,6 @@ import InspectLet from './vendor/inspectlet';
 
 
 import './app.global.scss';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function App(): React.ReactElement {
 

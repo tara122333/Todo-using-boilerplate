@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './addtaskmodal.component.scss'
 import { RxCross2 } from 'react-icons/rx'
 import { AccessService } from '../../services';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 import AddList from '../addlist/addlist.component';
 
@@ -29,7 +29,7 @@ export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "creat
     const accountId = localStorage.getItem("user");
 
 
-    const getAllLists = useCallback(async () => {
+    const getTaskData = useCallback(async () => {
         try {
 
             const response = await accessService.getTask(accountId, token, id);
@@ -51,12 +51,13 @@ export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "creat
         token
     ]);
 
+
     useEffect(() => {
         getAllLists();
     }, [listToggel])
 
 
-    const getTaskData = useCallback(async () => {
+    const getAllLists = useCallback(async () => {
         try {
 
             const response = await accessService.getAllLists(accountId, token);
@@ -79,22 +80,37 @@ export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "creat
         }
     }, [id, type]);
 
-
-    const addTask = useCallback(async () => {
+    const addTask = async () => {
         try {
-            if (type === "edit" && id != "") {
+            // if (type === "edit" && id != "") {
 
-            } else {
-                const response = await accessService.createTask(accountId, token, task.name, task.date, task.time);
-                console.log(response);
+            // } else {
+
+            // }
+            if (type === "create") {
+                if (task.name.length <= 0) {
+                    toast.error("task name is required!");
+                }
+                else {
+                    const response = await accessService.createTask(accountId, token, task.name, task.date, task.time, task.list);
+                    if (response.data) {
+                        toast.success("task added!");
+                        setTask({
+                            name: "",
+                            date: "",
+                            time: "",
+                            list: "",
+                            status: "false"
+                        });
+                        setIsOpen(false);
+                    }
+                }
             }
 
         } catch (err) {
             toast.error("something went wrong!");
         }
-    }, [
-        lists
-    ]);
+    };
 
     return (
 
@@ -210,6 +226,7 @@ export default function AddTaskModal({ isOpen, setIsOpen, id = "", type = "creat
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div >
     );
 }

@@ -17,8 +17,7 @@ export default function TaskDesign(props): React.ReactElement {
 
     const accessService = new AccessService();
 
-    const editTask = (id) => {
-        console.log(id);
+    const editTask = () => {
         openTaskModal();
     }
 
@@ -33,7 +32,7 @@ export default function TaskDesign(props): React.ReactElement {
                 toast.success("delete success!!");
             }
         } catch (err) {
-
+            
         }
     }, [
         token, accountId
@@ -63,7 +62,7 @@ export default function TaskDesign(props): React.ReactElement {
                     <h4 className=''>{props.status === "true" ? "Completed" : "Not Completed"}</h4>
                 </div>
                 <div className='task-op-btn'>
-                    <span className='edit-btn' onClick={() => { editTask(props.id) }}>
+                    <span className='edit-btn' onClick={() => { editTask() }}>
                         <BiPencil />
                     </span>
                     <span className='trash-btn' onClick={() => { deleteTask(props.id) }}>

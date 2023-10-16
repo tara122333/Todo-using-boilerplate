@@ -38,7 +38,7 @@ export default function Header(): React.ReactElement {
         </div>
       </div>
       {
-        openusermodal && <Usermodal isOpen={openusermodal} setIsOpen={setOpenusermodal} />
+        openusermodal && <Usermodal setIsOpen={setOpenusermodal} />
       }
     </>
   );

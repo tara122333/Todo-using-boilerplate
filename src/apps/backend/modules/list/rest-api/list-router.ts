@@ -9,7 +9,7 @@ export default class ListRouter {
     public static getRoutes(): Router {
         const router = Router({ mergeParams: true });
 
-        router.post('/', ListController.createList);
+        router.post('/', AccountAuthMiddleware.ensureAccess, ListController.createList);
         router.get('/', AccountAuthMiddleware.ensureAccess, ListController.getAllLists);
         router.delete('/:id', AccountAuthMiddleware.ensureAccess, ListController.deleteList);
 

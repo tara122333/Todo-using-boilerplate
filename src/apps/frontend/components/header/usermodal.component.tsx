@@ -4,13 +4,12 @@ import './usermodal.component.scss'
 import { useNavigate } from 'react-router-dom';
 import { AccessService } from '../../services';
 
-export default function Usermodal({ isOpen, setIsOpen }): React.ReactElement {
+export default function Usermodal({setIsOpen }): React.ReactElement {
 
     const accessService = new AccessService();
     const [username, setUsername] = useState("");
 
     const navigate = useNavigate();
-    console.log(isOpen);
 
     const logout = () => {
         setIsOpen(false);
